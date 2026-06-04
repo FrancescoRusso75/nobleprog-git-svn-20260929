@@ -8,11 +8,7 @@ var vatRate = settings.GetProperty("VatRate").GetDecimal();
 var dataFile = settings.GetProperty("DataFile").GetString()!;
 var currency = settings.GetProperty("Currency").GetString();
 
-var products = new List<Product>
-{
-    new("P001", "Tastiera", 25.00m, 10),
-    new("P002", "Mouse", 12.50m, 3),
-};
+var products = CatalogLoader.Load(dataFile);
 var calculator = new PriceCalculator(vatRate);
 
 foreach (var product in products)
